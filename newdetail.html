@@ -35,42 +35,37 @@
 	<script type="text/javascript" src="public/js/localstorage.js"></script>
 	<script type="text/javascript">
 		/*  初始化数据  */
-		$.ajax({
-			url:'json/newlist.json',
-			type:'get'
-		}).done(function(data){
-			Storage.setItem('newcontent',data);
-			window.newcontent = data;
-			var commentdetail = ''
+		data = Storage.getItem('newcontent');
+		window.userid = Storage.getItem('userlist');
+		function changedetail(){
+			var commentdetail = '';
 			/*  更新新闻详细  */
-			for (var i = 0; i <newcontent.NewList.length ; i++) {
-		      if (newcontent.NewList[i].id == location.hash.replace("#",'')) {
-		          $("#newdetail .newtitle").html(newcontent.NewList[i].NewTitle);
-		          $("#newdetail .newtime").html(newcontent.NewList[i].CreatTime);
-		          $("#newdetail .newAuther").html(newcontent.NewList[i].Auther);
-		          $("#newdetail .content-block").html(newcontent.NewList[i].NewContent);
+			for (var i = 0; i <data.NewList.length ; i++) {
+		      if (data.NewList[i].id == location.hash.replace("#",'')) {
+		          $("#newdetail .newtitle").html(data.NewList[i].NewTitle);
+		          $("#newdetail .newtime").html(data.NewList[i].CreatTime);
+		          $("#newdetail .newAuther").html(data.NewList[i].Auther);
+		          $("#newdetail .content-block").html(data.NewList[i].NewContent);
 
-		          for (var f = 0; f<newcontent.NewList[i].comment.length; f++) {
-		          	commentdetail +='<p>'+newcontent.NewList[i].comment[f].commentname +'说了：'+ newcontent.NewList[i].comment[f].commentcontent+'</p>';
+		          for (var f = 0; f<data.NewList[i].comment.length; f++) {
+		          	commentdetail +='<p>'+data.NewList[i].comment[f].commentname +'说了：'+ data.NewList[i].comment[f].commentcontent+'</p>';
 		          }
 		      }
 		    }
 		    $(".commonList").html(commentdetail);
-		    
-		})
+		}
+		changedetail();	
 
 		/*  搜索输入的名称  */
 		$("body").on('click','.commitcommon',function(){
-			var data = Storage.getItem("newcontent");
-			var inputval = $('.search-input').val();
-			var changedata ={'NewList':[]};
-			for (var i = 0; i <data.NewList.length; i++) {
-				if(data.NewList[i].NewTitle.indexOf(inputval)!=-1){			
-					changedata.NewList.push(data.NewList[i]);
+			var inputval = $('.commontext').val();
+			for (var i = 0; i <data.NewList.length ; i++) {
+				if (data.NewList[i].id == location.hash.replace("#",'')) {
+					data.NewList[i].comment.push({'commentname':userid.userList[0].username,'commentcontent':inputval})
 				}
-			};
-			changelist(changedata,1);
-			pagination()
+			}
+			Storage.setItem('newcontent',data);
+			changedetail()
 		})
 		
 	</script>

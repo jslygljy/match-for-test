@@ -1,16 +1,10 @@
 var num = 1;
-
-/*  初始化数据  */
-$.ajax({
-	url:'json/newlist.json',
-	type:'get'
-}).done(function(data){
-	Storage.setItem('newcontent',data);
-	window.newcontent = data;
-	window.pagenum = Math.ceil(data.NewList.length/5);
-	pagination();
-	changelist(window.newcontent,1);
-})
+console.log(1)
+var data = Storage.getItem('newcontent');
+window.newcontent = data;
+window.pagenum = Math.ceil(data.NewList.length/5);
+pagination();
+changelist(window.newcontent,1);
 
 /*  更新列表  */
 function changelist(data,num){
