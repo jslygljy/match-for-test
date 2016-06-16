@@ -15,10 +15,14 @@
 				<p class="newtime"></p>
 				<p class="newAuther"></p>
 			</div>
-			<div class="content-block">
+			<pre class="content-block">
 				
-			</div>
+			</pre>
 		</div>
+		
+		<div class="commonList"></div>
+		<textarea class="commontext"></textarea>
+		<a class="button commitcommon">提交</a>
 	    <ul>
 		    <li><a href="index.html">首页</a></li>
 		    <li><a href="login.html">登录</a></li>
@@ -37,17 +41,37 @@
 		}).done(function(data){
 			Storage.setItem('newcontent',data);
 			window.newcontent = data;
+			var commentdetail = ''
 			/*  更新新闻详细  */
 			for (var i = 0; i <newcontent.NewList.length ; i++) {
 		      if (newcontent.NewList[i].id == location.hash.replace("#",'')) {
-		          $("#newdetail .newtitle").html(window.newcontent.NewList[i].NewTitle);
-		          $("#newdetail .newtime").html(window.newcontent.NewList[i].CreatTime);
-		          $("#newdetail .newAuther").html(window.newcontent.NewList[i].Auther);
-		          $("#newdetail .content-block").html(window.newcontent.NewList[i].NewContent);
+		          $("#newdetail .newtitle").html(newcontent.NewList[i].NewTitle);
+		          $("#newdetail .newtime").html(newcontent.NewList[i].CreatTime);
+		          $("#newdetail .newAuther").html(newcontent.NewList[i].Auther);
+		          $("#newdetail .content-block").html(newcontent.NewList[i].NewContent);
+
+		          for (var f = 0; f<newcontent.NewList[i].comment.length; f++) {
+		          	commentdetail +='<p>'+newcontent.NewList[i].comment[f].commentname +'说了：'+ newcontent.NewList[i].comment[f].commentcontent+'</p>';
+		          }
 		      }
 		    }
+		    $(".commonList").html(commentdetail);
+		    
 		})
 
+		/*  搜索输入的名称  */
+		$("body").on('click','.commitcommon',function(){
+			var data = Storage.getItem("newcontent");
+			var inputval = $('.search-input').val();
+			var changedata ={'NewList':[]};
+			for (var i = 0; i <data.NewList.length; i++) {
+				if(data.NewList[i].NewTitle.indexOf(inputval)!=-1){			
+					changedata.NewList.push(data.NewList[i]);
+				}
+			};
+			changelist(changedata,1);
+			pagination()
+		})
 		
 	</script>
 </body>
