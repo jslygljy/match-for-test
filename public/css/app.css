@@ -1,6 +1,87 @@
 *{margin: 0px;padding: 0px;}
+li{list-style: none}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+
+/* 布局样式   */
 .app{position: relative;display:flex;align-items:center;padding: 13px 10px;border-bottom: 1px solid #cfcfcf;}
+
 
 .list_row{display:table-row; overflow:hidden;}
 .list_cell{display:table-cell;width: 30%;background-color:#f5f5f5;}
 .list_center{background-color:#f0f3f9;}
+
+.timeorder{margin-left: 10px;}
+
+/* list 样式   */
+.list-block{margin-top: 10px;}
+.list-block ul{background: #fff;position:relative;}
+.list-block ul:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: auto;
+    right: auto;
+    height: 1px;
+    width: 100%;
+    background-color: #c8c7cc;
+    display: block;
+    z-index: 15;
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+}
+.list-block li{box-sizing: border-box;position: relative;}
+.list-block li img{display: block;width:42px;}
+.list-block .item-content{
+	box-sizing: border-box;
+	padding-left: 15px;
+	display: flex;
+	max-height: 55px;
+	align-items: center;
+	    background: url(../images/right.jpg) no-repeat center right;
+    background-size: contain;
+	
+}
+.list-block .item-media{
+	display: flex;
+	flex-shrink: 0;
+	box-sizing: border-box;
+	align-items: center;
+	padding: 10px 0px;
+}
+.list-block .item-inner:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: auto;
+    top: auto;
+    height: 1px;
+    width: 100%;
+    background-color: #c8c7cc;
+    display: block;
+    z-index: 15;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+.button {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    border-radius: 2px;
+    line-height: 36px;
+    box-sizing: border-box;
+    height: 36px;
+    padding: 0 8px;
+        background-color: #2196f3;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.button a{color: #fff;}
+.button.active-state,html:not(.watch-active-state) .button:active {
+	background: rgba(0,0,0,.1)
+}

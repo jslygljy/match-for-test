@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>首页</title>
 	<meta charset="utf-8">
 	<meta name='viewport' content="width=device-width,initial-scale=1.0,user-scalable=no">
 	<link rel="stylesheet" href="public/css/bootstrap.css">
@@ -26,10 +26,40 @@
 	        <div class="list_cell list_center">作为一个被基阿异捅过两个大血窟窿的人。告诉后来的基友们一句：一命二运三风水，四积阴功五读书。</div>
 	        <div class="list_cell">奔波了一天，收到了无数的生日快乐，享受了电影见面会现场各种形式的祝福和礼物，以及场面宏大的生日快乐歌，感谢＜西风烈＞，感谢支持我的朋友们！现在机场举长寿面祝你们都永远幸福快乐！ </div>
 	    </div>
+	    筛选:<input type="text" name="" class="search-input"><span class="sublimetype">提交</span>
+	    分类筛选:<span class="ordername">按名称排序</span><span class="timeorder">按时间排序</span>
+	    <div class="list-block media-list" id="indexList">
+	    	<ul>
+	    		
+	    	</ul>
+	    </div>
+	    <nav>
+	    	<ul class="pagination">
+	    		
+	    	</ul>
+	    </nav>
+	    <script type="text/template" id="newlist">
+    		<li><a href="newdetail.html?#{id}" class="item-content">
+					<div class="item-media"><img src="{imagesid}"></div>
+					<div class="item-inner">
+						<div class="item-title-row">
+							<div class="item-title">{time}</div>
+						</div>
+						<div class="item-subtitle">{name}</div>
+					</div>
+				</a>
+			</li>
+	    </script>
+	    <ul>
+		    <li><a href="index.html">首页</a></li>
+		    <li><a href="login.html">登录</a></li>
+		    <li><a href="resgit.html">注册</a></li>
+		    <li><a href="addNew.html">新增</a></li>
+		</ul>
 	</div>
 	<script type="text/javascript" src="public/js/jquery.min.js"></script>
 	<script type="text/javascript" src="public/js/main.js"></script>
 	<script type="text/javascript" src="public/js/rem.js"></script>
-	<script src="public/js/bootstrap.min.js"></script> 
+	<script type="text/javascript" src="public/js/localstorage.js"></script>
 </body>
 </html>

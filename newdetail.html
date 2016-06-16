@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta charset="utf-8">
+	<meta name='viewport' content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<link rel="stylesheet" href="public/css/bootstrap.css">
+	<link rel="stylesheet" href="public/css/app.css">
+</head>
+<body>
+	<div class="container">
+		<div id="newdetail">
+			<h2 class="newtitle"></h2>
+			<div class="item-content">
+				<p class="newtime"></p>
+				<p class="newAuther"></p>
+			</div>
+			<div class="content-block">
+				
+			</div>
+		</div>
+	    <ul>
+		    <li><a href="index.html">首页</a></li>
+		    <li><a href="login.html">登录</a></li>
+		    <li><a href="resgit.html">注册</a></li>
+		    <li><a href="addNew.html">新增</a></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="public/js/jquery.min.js"></script>
+	<script type="text/javascript" src="public/js/rem.js"></script>
+	<script type="text/javascript" src="public/js/localstorage.js"></script>
+	<script type="text/javascript">
+		/*  初始化数据  */
+		$.ajax({
+			url:'json/newlist.json',
+			type:'get'
+		}).done(function(data){
+			Storage.setItem('newcontent',data);
+			window.newcontent = data;
+			/*  更新新闻详细  */
+			for (var i = 0; i <newcontent.NewList.length ; i++) {
+		      if (newcontent.NewList[i].id == location.hash.replace("#",'')) {
+		          $("#newdetail .newtitle").html(window.newcontent.NewList[i].NewTitle);
+		          $("#newdetail .newtime").html(window.newcontent.NewList[i].CreatTime);
+		          $("#newdetail .newAuther").html(window.newcontent.NewList[i].Auther);
+		          $("#newdetail .content-block").html(window.newcontent.NewList[i].NewContent);
+		      }
+		    }
+		})
+
+		
+	</script>
+</body>
+</html>
