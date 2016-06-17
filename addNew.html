@@ -9,19 +9,41 @@
 </head>
 <body>
 	<div class="container">
+		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<strong>添加成功</strong>
+		</div>
 		<div class="list-input">
 			<div class="list-name">新闻标题:</div>
-			<div class="list-input"><input type="" name=""></div>
+			<div class="list-input"><input type="text" class="newstitle" name=""></div>
 		</div>
 		<div class="list-input">
 			<div class="list-name">内容:</div>
-			<div class="list-input"><textarea></textarea></div>
+			<div class="list-input"><textarea name="\" id="input\" class="form-control newscontent" rows="3" required="required"></textarea></div>
 		</div>
 		<div class="list-input">
 			<div class="list-name">默认图片:</div>
-			<div class="list-input"><input type="radio" name="defulaimg">彩虹1<input type="radio" name="defulaimg">彩虹2<input type="radio" name="defulaimg">彩3<input type="radio" name="defulaimg">彩虹4</div>
+			<div class="list-input">
+			<div class="radio">
+				<label>
+					<input type="radio" name="1" id="input1" value="1" checked="checked">
+					Radio Box1
+				</label>
+				<label>
+					<input type="radio" name="1" id="input2" value="2">
+					Radio Box2
+				</label>
+				<label>
+					<input type="radio" name="1" id="input3" value="3">
+					Radio Box3
+				</label>
+				<label>
+					<input type="radio" name="1" id="input4" value="4">
+					Radio Box4
+				</label>
+			</div>
 		</div>
-		<a href="#" class="button addNews">添加</a>
+		<button type="button" class="btn btn-default addNews">添加</button>
 	    <ul>
 		    <li><a href="index.html">首页</a></li>
 		    <li><a href="login.html">登录</a></li>
@@ -30,9 +52,10 @@
 		</ul>
 	</div>
 	<script type="text/javascript" src="public/js/jquery.min.js"></script>
+	<script type="text/javascript" src="public/js/localstorage.js"></script>
 	<script type="text/javascript" src="public/js/main.js"></script>
 	<script type="text/javascript" src="public/js/rem.js"></script>
-	<script type="text/javascript" src="public/js/localstorage.js"></script>
+	
 </body>
 </html>
 

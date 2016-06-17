@@ -1,27 +1,15 @@
 /**
  * 动态更改rem值
  */
-!(function (win) {
-	var doc = win.document;
-	var docEL = doc.documentElement;
+!(function () {
+	var docEL = window.document.documentElement;
 	var tid;
 	function refushRem(){
-		var width = docEL.getClientRects().width;
-		if (width <540) {
-			width = 540;
-		}
-		var rem = width / 6.4;
-		docEL.style.fontSize = rem + 'px';
+		var width = docEL.getBoundingClientRect().width;
+		docEL.style.fontSize = width / 6.4 + 'px';
 	};
-	win.addEventListener('resize',function(){
-		clearTimeout(tid);
-		tid = setTimeout(refushRem,300);
-	},false);
-	win.addEventListener('pageshow',function(e){
-		if (e.persisted) {
-			clearTimeout(tid);
-			tid = setTimeout(refushRem,300);
-		}
+	window.addEventListener('resize',function(){
+		refushRem();
 	},false);
 	refushRem();
-})(window)
+})()

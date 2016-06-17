@@ -31,43 +31,11 @@
 		</ul>
 	</div>
 	<script type="text/javascript" src="public/js/jquery.min.js"></script>
-	<script type="text/javascript" src="public/js/rem.js"></script>
 	<script type="text/javascript" src="public/js/localstorage.js"></script>
+	<script type="text/javascript" src="public/js/main.js"></script>
+	<script type="text/javascript" src="public/js/rem.js"></script>
 	<script type="text/javascript">
-		/*  初始化数据  */
-		data = Storage.getItem('newcontent');
-		window.userid = Storage.getItem('userlist');
-		function changedetail(){
-			var commentdetail = '';
-			/*  更新新闻详细  */
-			for (var i = 0; i <data.NewList.length ; i++) {
-		      if (data.NewList[i].id == location.hash.replace("#",'')) {
-		          $("#newdetail .newtitle").html(data.NewList[i].NewTitle);
-		          $("#newdetail .newtime").html(data.NewList[i].CreatTime);
-		          $("#newdetail .newAuther").html(data.NewList[i].Auther);
-		          $("#newdetail .content-block").html(data.NewList[i].NewContent);
-
-		          for (var f = 0; f<data.NewList[i].comment.length; f++) {
-		          	commentdetail +='<p>'+data.NewList[i].comment[f].commentname +'说了：'+ data.NewList[i].comment[f].commentcontent+'</p>';
-		          }
-		      }
-		    }
-		    $(".commonList").html(commentdetail);
-		}
 		changedetail();	
-
-		/*  搜索输入的名称  */
-		$("body").on('click','.commitcommon',function(){
-			var inputval = $('.commontext').val();
-			for (var i = 0; i <data.NewList.length ; i++) {
-				if (data.NewList[i].id == location.hash.replace("#",'')) {
-					data.NewList[i].comment.push({'commentname':userid.userList[0].username,'commentcontent':inputval})
-				}
-			}
-			Storage.setItem('newcontent',data);
-			changedetail()
-		})
-		
 	</script>
 </body>
 </html>
